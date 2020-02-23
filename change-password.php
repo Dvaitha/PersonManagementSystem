@@ -3,12 +3,12 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 error_reporting(0);
-if (strlen($_SESSION['cvmsaid']==0)) {
+if (strlen($_SESSION['pmsaid']==0)) {
   header('location:logout.php');
   } else{
 if(isset($_POST['submit']))
 {
-$adminid=$_SESSION['cvmsaid'];
+$adminid=$_SESSION['pmsaid'];
 $cpassword=md5($_POST['currentpassword']);
 $newpassword=md5($_POST['newpassword']);
 $query=mysqli_query($con,"select ID from tbladmin where ID='$adminid' and   Password='$cpassword'");
@@ -29,6 +29,7 @@ $msg="Your current password is wrong";
   ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -60,19 +61,17 @@ $msg="Your current password is wrong";
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
-<script type="text/javascript">
-function checkpass()
-{
-if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
-{
-alert('New Password and Confirm Password field does not match');
-document.changepassword.confirmpassword.focus();
-return false;
-}
-return true;
-}   
+    <script type="text/javascript">
+        function checkpass() {
+            if (document.changepassword.newpassword.value != document.changepassword.confirmpassword.value) {
+                alert('New Password and Confirm Password field does not match');
+                document.changepassword.confirmpassword.focus();
+                return false;
+            }
+            return true;
+        }
 
-</script>
+    </script>
 </head>
 
 <body class="animsition">
@@ -82,7 +81,7 @@ return true;
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
-        
+
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
@@ -96,7 +95,7 @@ return true;
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                          
+
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -108,8 +107,8 @@ return true;
     echo $msg;
   }  ?> </p>
 
-   <?php
-$adminid=$_SESSION['cvmsaid'];
+                                            <?php
+$adminid=$_SESSION['pmsaid'];
 $ret=mysqli_query($con,"select * from tbladmin where ID='$adminid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
@@ -121,7 +120,7 @@ while ($row=mysqli_fetch_array($ret)) {
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="password" id="currentpassword" name="currentpassword" value="" class="form-control" required="">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -130,7 +129,7 @@ while ($row=mysqli_fetch_array($ret)) {
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="password" id="newpassword" name="newpassword" value="" class="form-control" required="">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -139,55 +138,55 @@ while ($row=mysqli_fetch_array($ret)) {
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" maxlength="10" value="" required="">
-                                                    
+
                                                 </div>
                                             </div>
-                                          
-                                                                                        
+
+
                                             <?php } ?>
-                                          <div class="card-footer">
-                                        <p style="text-align: center;"><button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm">Change
-                                        </button></p>
-                                        
-                                    </div>
+                                            <div class="card-footer">
+                                                <p style="text-align: center;"><button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm">Change
+                                                    </button></p>
+
+                                            </div>
                                         </form>
                                     </div>
-                                   
+
                                 </div>
-                       
-                     
-                        
-     
-<?php include_once('includes/footer.php');?>
-               </div>
+
+
+
+
+                                <?php include_once('includes/footer.php');?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-   </div>
-    </div>
-    <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
+        <!-- Jquery JS-->
+        <script src="vendor/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap JS-->
+        <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+        <!-- Vendor JS       -->
+        <script src="vendor/slick/slick.min.js">
+        </script>
+        <script src="vendor/wow/wow.min.js"></script>
+        <script src="vendor/animsition/animsition.min.js"></script>
+        <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+        </script>
+        <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendor/counter-up/jquery.counterup.min.js">
+        </script>
+        <script src="vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+        <script src="vendor/select2/select2.min.js">
+        </script>
 
-    <!-- Main JS-->
-    <script src="js/main.js"></script>
+        <!-- Main JS-->
+        <script src="js/main.js"></script>
 
 </body>
 

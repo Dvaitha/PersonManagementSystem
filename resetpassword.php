@@ -33,7 +33,7 @@ session_destroy();
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>CVMS Reset Password</title>
+    <title>pms Reset Password</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -76,7 +76,7 @@ session_destroy();
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#" style="font-size:24px;">
-                                Company Visitor Management System (CVMS)
+                                Company Visitor Management System (pms)
                             </a>
                         </div>
                         <p style="font-size:16px; color:red" align="center"> <?php if($msg){

@@ -10,7 +10,7 @@ if(isset($_POST['login']))
     $query=mysqli_query($con,"select ID from tbladmin where  UserName='$adminuser' && Password='$password' ");
     $ret=mysqli_fetch_array($query);
     if($ret>0){
-      $_SESSION['cvmsaid']=$ret['ID'];
+      $_SESSION['pmsaid']=$ret['ID'];
      header('location:new-person.php');
     }
     else{

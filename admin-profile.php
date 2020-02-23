@@ -2,12 +2,12 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['cvmsaid']==0)) {
+if (strlen($_SESSION['pmsaid']==0)) {
   header('location:logout.php');
   } else{
     if(isset($_POST['submit']))
   {
-    $adminid=$_SESSION['cvmsaid'];
+    $adminid=$_SESSION['pmsaid'];
     $AName=$_POST['adminname'];
   $mobno=$_POST['mobilenumber'];
   $email=$_POST['email'];
@@ -24,6 +24,7 @@ if (strlen($_SESSION['cvmsaid']==0)) {
   ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -65,7 +66,7 @@ if (strlen($_SESSION['cvmsaid']==0)) {
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
-        
+
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
@@ -79,7 +80,7 @@ if (strlen($_SESSION['cvmsaid']==0)) {
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                          
+
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -91,8 +92,8 @@ if (strlen($_SESSION['cvmsaid']==0)) {
     echo $msg;
   }  ?> </p>
 
-   <?php
-$adminid=$_SESSION['cvmsaid'];
+                                            <?php
+$adminid=$_SESSION['pmsaid'];
 $ret=mysqli_query($con,"select * from tbladmin where ID='$adminid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
@@ -104,7 +105,7 @@ while ($row=mysqli_fetch_array($ret)) {
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" id="adminname" name="adminname" value="<?php  echo $row['AdminName'];?>" class="form-control" required="">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -113,7 +114,7 @@ while ($row=mysqli_fetch_array($ret)) {
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="email" id="email" name="email" value="<?php  echo $row['Email'];?>" class="form-control" required="">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -122,10 +123,10 @@ while ($row=mysqli_fetch_array($ret)) {
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" id="mobilenumber" name="mobilenumber" class="form-control" maxlength="10" value="<?php  echo $row['MobileNumber'];?>" required="">
-                                                    
+
                                                 </div>
                                             </div>
-                                          
+
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="textarea-input" class=" form-control-label">User Name</label>
@@ -135,60 +136,60 @@ while ($row=mysqli_fetch_array($ret)) {
 
                                                 </div>
                                             </div>
-                                             <div class="row form-group">
+                                            <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="password-input" class=" form-control-label">Admin Registration date</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="adminregdate" name="adminregdate"  value="<?php  echo $row['AdminRegdate'];?>" class="form-control" required="" readonly="">
-                                                    
+                                                    <input type="text" id="adminregdate" name="adminregdate" value="<?php  echo $row['AdminRegdate'];?>" class="form-control" required="" readonly="">
+
                                                 </div>
                                             </div>
-                                                                                        
+
                                             <?php } ?>
-                                          <div class="card-footer">
-                                        <p style="text-align: center;"><button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm">Update
-                                        </button></p>
-                                        
-                                    </div>
+                                            <div class="card-footer">
+                                                <p style="text-align: center;"><button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm">Update
+                                                    </button></p>
+
+                                            </div>
                                         </form>
                                     </div>
-                                   
+
                                 </div>
-                       
-                     
-                        
-      
-<?php include_once('includes/footer.php');?>
-              </div>
+
+
+
+
+                                <?php include_once('includes/footer.php');?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-   </div>
-    </div>
-    <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
+        <!-- Jquery JS-->
+        <script src="vendor/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap JS-->
+        <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+        <!-- Vendor JS       -->
+        <script src="vendor/slick/slick.min.js">
+        </script>
+        <script src="vendor/wow/wow.min.js"></script>
+        <script src="vendor/animsition/animsition.min.js"></script>
+        <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+        </script>
+        <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendor/counter-up/jquery.counterup.min.js">
+        </script>
+        <script src="vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+        <script src="vendor/select2/select2.min.js">
+        </script>
 
-    <!-- Main JS-->
-    <script src="js/main.js"></script>
+        <!-- Main JS-->
+        <script src="js/main.js"></script>
 
 </body>
 

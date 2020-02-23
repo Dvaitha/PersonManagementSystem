@@ -2,25 +2,25 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['cvmsaid']==0)) {
+if (strlen($_SESSION['pmsaid']==0)) {
   header('location:logout.php');
   } else{
     if(isset($_POST['submit']))
   {
 
-$cvmsaid=$_SESSION['cvmsaid'];
+$pmsaid=$_SESSION['pmsaid'];
  $fullname=$_POST['fullname'];
 
 $mobnumber=$_POST['mobilenumber'];
 $email=$_POST['email'];
 $add=$_POST['address'];
-$whomtomeet=$_POST['whomtomeet'];
+$bloodGroup=$_POST['bloodGroup'];
 $department=$_POST['department'];
-$reasontomeet=$_POST['reasontomeet'];
- $query=mysqli_query($con,"insert into tblvisitor(FullName,Email,MobileNumber,Address,WhomtoMeet,Deptartment,ReasontoMeet) value('$fullname','$email','$mobnumber','$add','$whomtomeet','$department','$reasontomeet')");
+$underwentSurgery=$_POST['underwentSurgery'];
+ $query=mysqli_query($con,"insert into tblvisitor(FullName,Email,MobileNumber,Address,BloodGroup,Deptartment,UnderwentSurgery) value('$fullname','$email','$mobnumber','$add','$bloodGroup','$department','$underwentSurgery')");
 
     if ($query) {
-    $msg="Visitors Detail has been added.";
+    $msg="Person Detail has been added.";
   }
   else
     {
@@ -33,6 +33,7 @@ $reasontomeet=$_POST['reasontomeet'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -42,7 +43,7 @@ $reasontomeet=$_POST['reasontomeet'];
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>CVSM Visitors Forms</title>
+    <title>CVSM Person Forms</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -71,7 +72,7 @@ $reasontomeet=$_POST['reasontomeet'];
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <?php include_once('includes/sidebar.php');?>
-   
+
         <div class="page-container">
             <!-- HEADER DESKTOP-->
             <?php include_once('includes/header.php');?>
@@ -82,11 +83,11 @@ $reasontomeet=$_POST['reasontomeet'];
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                          
+
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong>Add</strong> New Visitors
+                                        <strong>Add</strong> New Person
                                     </div>
                                     <div class="card-body card-block">
                                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -99,7 +100,7 @@ $reasontomeet=$_POST['reasontomeet'];
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" id="fullname" name="fullname" placeholder="Full Name" class="form-control" required="">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -108,7 +109,7 @@ $reasontomeet=$_POST['reasontomeet'];
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="email" id="email" name="email" placeholder="Enter Email" class="form-control" required="">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -117,25 +118,25 @@ $reasontomeet=$_POST['reasontomeet'];
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" id="mobilenumber" name="mobilenumber" placeholder="Mobile Number" class="form-control" maxlength="10" required="">
-                                                    
+
                                                 </div>
                                             </div>
-                                          
+
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="textarea-input" class=" form-control-label">Address</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <textarea name="address" id="address" rows="9" placeholder="Enter Visitor Address..." class="form-control" required=""></textarea>
+                                                    <textarea name="address" id="address" rows="9" placeholder="Enter Person Address..." class="form-control" required=""></textarea>
                                                 </div>
                                             </div>
-                                             <div class="row form-group">
+                                            <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label for="password-input" class=" form-control-label">Whom to Meet</label>
+                                                    <label for="password-input" class=" form-control-label">Blood Group</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="whomtomeet" name="whomtomeet" placeholder="Whom to Meet" class="form-control" required="">
-                                                    
+                                                    <input type="text" id="bloodGroup" name="bloodGroup" placeholder="Enter Blood Group" class="form-control" required="">
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -144,39 +145,40 @@ $reasontomeet=$_POST['reasontomeet'];
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" id="department" name="department" placeholder="Department" class="form-control" required="">
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label for="password-input" class=" form-control-label">Reason To Meet</label>
+                                                    <label for="password-input" class=" form-control-label">Underwent Surgery</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="reasontomeet" name="reasontomeet" placeholder="Reason To Meet" class="form-control" required="">
-                                                    
+                                                    <input type="text" id="underwentSurgery" name="underwentSurgery" placeholder="Underwent Surgery (Enter Details)" class="form-control" required="">
+
                                                 </div>
                                             </div>
-                                            
-                                          <div class="card-footer">
-                                        <p style="text-align: center;"><button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm">Submit
-                                        </button></p>
-                                        
-                                    </div>
+
+                                            <div class="card-footer">
+                                                <p style="text-align: center;"><button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm">Submit
+                                                    </button></p>
+
+                                            </div>
                                         </form>
                                     </div>
-                                   
+
                                 </div>
-                       
+
+                            </div>
+
                         </div>
-                        
+
+
+                        <?php include_once('includes/footer.php');?>
                     </div>
-               
- 
-<?php include_once('includes/footer.php');?>
-   </div> </div>
+                </div>
             </div>
         </div>
-</div>
+    </div>
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->

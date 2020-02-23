@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['cvmsaid']==0)) {
+if (strlen($_SESSION['pmsaid']==0)) {
   header('location:logout.php');
   } else{
 
@@ -22,7 +22,7 @@ if (strlen($_SESSION['cvmsaid']==0)) {
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>CVMS Visitors</title>
+    <title>CVMS person</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -50,11 +50,11 @@ if (strlen($_SESSION['cvmsaid']==0)) {
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
-      <?php include_once('includes/sidebar.php');?>
+        <?php include_once('includes/sidebar.php');?>
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
-      
+
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
@@ -71,75 +71,74 @@ if (strlen($_SESSION['cvmsaid']==0)) {
                             <div class="col-lg-12">
                                 <div class="table-responsive table--no-card m-b-30">
                                     <table class="table table-borderless table-striped table-earning">
-                                         <thead>
-                                        <tr>
+                                        <thead>
                                             <tr>
-                  <th>S.NO</th>
-            
-                  <th>Full Name</th>
-              
-              <th>Contact Number</th>
-              <th>Email</th>
-                   <th>Action</th>
-                </tr>
-                                        </tr>
+                                            <tr>
+                                                <th>S.NO</th>
+
+                                                <th>Full Name</th>
+
+                                                <th>Contact Number</th>
+                                                <th>Email</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </tr>
                                         </thead>
-                                       <?php
+                                        <?php
 $ret=mysqli_query($con,"select *from tblvisitor");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>
-              
-                <tr>
-                  <td><?php echo $cnt;?></td>
-            
-                  <td><?php  echo $row['FullName'];?></td>
-                  <td><?php  echo $row['MobileNumber'];?></td>
-                <td><?php  echo $row['Email'];?></td>
-                  <td><a href="visitor-detail.php?editid=<?php echo $row['ID'];?>" title="View Full Details"><i class="fa fa-edit fa-1x"></i></a></td>
-                </tr>
-                <?php 
+
+                                        <tr>
+                                            <td><?php echo $cnt;?></td>
+
+                                            <td><?php  echo $row['FullName'];?></td>
+                                            <td><?php  echo $row['MobileNumber'];?></td>
+                                            <td><?php  echo $row['Email'];?></td>
+                                            <td><a href="visitor-detail.php?editid=<?php echo $row['ID'];?>" title="View Full Details"><i class="fa fa-edit fa-1x"></i></a></td>
+                                        </tr>
+                                        <?php 
 $cnt=$cnt+1;
 }?>
                                     </table>
                                 </div>
+
                             </div>
-                          
+
+
+
+                            <?php include_once('includes/footer.php');?>
                         </div>
-                        
-                        
-          
-<?php include_once('includes/footer.php');?>
-          </div>
+                    </div>
                 </div>
             </div>
+
         </div>
+        <!-- Jquery JS-->
+        <script src="vendor/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap JS-->
+        <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+        <!-- Vendor JS       -->
+        <script src="vendor/slick/slick.min.js">
+        </script>
+        <script src="vendor/wow/wow.min.js"></script>
+        <script src="vendor/animsition/animsition.min.js"></script>
+        <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+        </script>
+        <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendor/counter-up/jquery.counterup.min.js">
+        </script>
+        <script src="vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+        <script src="vendor/select2/select2.min.js">
+        </script>
 
-    </div>
-    <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
-
-    <!-- Main JS-->
-    <script src="js/main.js"></script>
+        <!-- Main JS-->
+        <script src="js/main.js"></script>
 
 </body>
 

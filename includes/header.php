@@ -11,7 +11,7 @@
                 <div class="header-button">
                     <div class="noti-wrap">
                         <?php
-$adminid=$_SESSION['cvmsaid'];
+$adminid=$_SESSION['pmsaid'];
 $ret=mysqli_query($con,"select AdminName from tbladmin where ID='$adminid'");
 $row=mysqli_fetch_array($ret);
 $name=$row['AdminName'];
